@@ -2,3 +2,10 @@
   position: absolute;
   z-index: -1;
 }
+
+@media (max-width: 75em) {
+  .circle {
+    width: 93.75%;
+    height: 93.75%;
+  }
+}
