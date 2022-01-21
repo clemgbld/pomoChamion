@@ -37,22 +37,20 @@ const App = () => {
         </Switch>
       )}
       {authName && (
-        <AnimatePresence exitBeforeEnter>
-          <Switch location={location} key={location.key}>
-            <Route path="/short">
-              <PomodoroShortPage />
-            </Route>
-            <Route path="/long">
-              <PomodoroLongPage />
-            </Route>
-            <Route path="/" exact>
-              <PomodoroPage />
-            </Route>
-            <Route path="*">
-              <Redirect to="/" exact />
-            </Route>
-          </Switch>
-        </AnimatePresence>
+        <Switch location={location} key={location.key}>
+          <Route path="/short">
+            <PomodoroShortPage />
+          </Route>
+          <Route path="/long">
+            <PomodoroLongPage />
+          </Route>
+          <Route path="/" exact>
+            <PomodoroPage />
+          </Route>
+          <Route path="*">
+            <Redirect to="/" exact />
+          </Route>
+        </Switch>
       )}
     </>
   );
