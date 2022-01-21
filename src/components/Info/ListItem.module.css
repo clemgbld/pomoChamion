@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 0.2rem;
+}
+
+.point {
+  font-size: 1.6rem;
+  transform: translateY(3px);
+}
+
+.text {
+  font-size: 1rem;
+}

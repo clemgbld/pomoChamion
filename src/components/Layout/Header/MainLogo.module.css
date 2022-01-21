@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.text {
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+@media (max-width: 25em) {
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .text {
+    font-size: 1.2rem;
+  }
+}

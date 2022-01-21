@@ -1,0 +1,85 @@
+.square-1 {
+  top: -5rem;
+  right: -6rem;
+  width: 10rem;
+  height: 10rem;
+  animation: animate 10s linear infinite;
+}
+
+.square-2 {
+  top: 15rem;
+  left: -10rem;
+  width: 12rem;
+  height: 12rem;
+  z-index: 2;
+  animation: animate 8s linear infinite;
+}
+
+.square-3 {
+  bottom: 5rem;
+  right: -6rem;
+  width: 8rem;
+  height: 8rem;
+  z-index: 2;
+  animation: animate 9s linear infinite;
+}
+
+.square-4 {
+  bottom: -8rem;
+  left: 10rem;
+  width: 5rem;
+  height: 5rem;
+  animation: animate 7s linear infinite;
+}
+
+.square-5 {
+  top: -8rem;
+  left: 14rem;
+  width: 6rem;
+  height: 6rem;
+  animation: animate 11s linear infinite;
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    transform: translateY(-3.5rem);
+  }
+
+  50% {
+    transform: translateY(3.5rem);
+  }
+}
+
+@media (max-width: 37.75em) {
+  .square-1 {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+  .square-2 {
+    width: 10rem;
+    height: 10rem;
+  }
+  .square-3 {
+    width: 6rem;
+    height: 6rem;
+  }
+  .square-4 {
+    width: 4rem;
+    height: 4rem;
+  }
+  .square-5 {
+    width: 5rem;
+    height: 5rem;
+  }
+  @keyframes animate {
+    0%,
+    100% {
+      transform: translateX(-6.5rem);
+    }
+
+    50% {
+      transform: translateX(6.5rem);
+    }
+  }
+}

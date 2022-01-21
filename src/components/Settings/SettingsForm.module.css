@@ -1,0 +1,73 @@
+.form {
+  height: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.6rem;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.form-control label {
+  font-size: 0.9rem;
+  color: #e9ecef;
+}
+
+.form-control input {
+  padding-left: 0.4rem;
+  width: 4.7rem;
+  height: 1.6rem;
+  border-radius: 3px;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  color: #e9ecef;
+  font-size: 0.9rem;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-control input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.8);
+}
+
+.toggle-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.button {
+  align-self: center;
+  width: 5.2rem;
+  height: 2rem;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: #e9ecef;
+  box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.8);
+}

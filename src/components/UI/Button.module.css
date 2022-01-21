@@ -1,0 +1,47 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  width: 7rem;
+  height: 3rem;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  margin-right: 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.logo {
+  font-size: 1.6rem;
+  transform: translateY(2px);
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: #868e96;
+  box-shadow: 0 0 0 0.3rem rgba(134, 142, 150, 0.5);
+}
+
+@media (max-width: 25em) {
+  .button {
+    width: 6rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    transform: translateY(1px);
+  }
+  .button:hover {
+    box-shadow: 0 0 0 0.2rem rgba(134, 142, 150, 0.5);
+  }
+}

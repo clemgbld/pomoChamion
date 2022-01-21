@@ -1,0 +1,39 @@
+.nav {
+  width: 30rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  color: #fff;
+  z-index: 5;
+  margin-bottom: 1.6rem;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.2rem;
+  padding-left: 0;
+}
+
+.nav ul a {
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav ul a:active,
+.nav ul a:hover {
+  color: #dee2e6;
+}
+
+nav ul .active {
+  padding: 0.3rem;
+  font-weight: 600;
+  color: #f1f3f5;
+}

@@ -1,0 +1,42 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 7rem;
+  height: 3rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+.start {
+  box-shadow: rgb(235 235 235) 0px 6px 0px;
+}
+
+.start:hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: #868e96;
+
+  box-shadow: rgba(134, 142, 150, 0.5) 0px 6px 0px;
+}
+
+.stop {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.stop:hover {
+  box-shadow: 0 0 0 0.3rem rgba(134, 142, 150, 0.5);
+}

@@ -1,0 +1,36 @@
+.container {
+  width: 4.5rem;
+  height: 2.2rem;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.1rem;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3.5rem;
+
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.circle {
+  width: 50%;
+  height: 100%;
+  border-radius: 50%;
+
+  background: #e9ecef;
+  transition: background 0.3s ease-in-out;
+}
+
+.container:hover .circle {
+  background: #ced4da;
+}
+
+.active {
+  justify-content: flex-end;
+  background: rgba(132, 199, 51, 0.8);
+}
