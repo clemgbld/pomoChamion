@@ -21,7 +21,7 @@ const App = () => {
     if (!authName) {
       setLogin(false);
     }
-  }, [dispatch]);
+  }, [dispatch, authName]);
 
   return (
     <>

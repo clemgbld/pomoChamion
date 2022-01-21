@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AnimatedDiv } from "../Animations/animations";
 import classes from "./SettingsToggle.module.css";
 
