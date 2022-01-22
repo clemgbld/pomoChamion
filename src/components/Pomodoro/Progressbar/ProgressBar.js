@@ -1,7 +1,7 @@
 import classes from "./ProgressBar.module.css";
-import { motion } from "framer-motion";
+import { AnimatedPath } from "../../Animations/animations";
 
-const ProgressBar = ({ controls, animationValue,color }) => {
+const ProgressBar = ({ controls, animationValue, color }) => {
   const pathVariants = {
     initial: {
       pathLength: 0,
@@ -23,7 +23,7 @@ const ProgressBar = ({ controls, animationValue,color }) => {
       enableBackground="new 0 0 200 200"
       xmlSpace="preserve"
     >
-      <motion.path
+      <AnimatedPath
         className="path"
         variants={pathVariants}
         initial="initial"
@@ -36,7 +36,7 @@ const ProgressBar = ({ controls, animationValue,color }) => {
         d="M100.416,2.001C154.35,2.225,198,46.015,198,100
       c0,54.124-43.876,98-98,98S2,154.124,2,100S45.876,2,100,2"
       />
-      <motion.path
+      <AnimatedPath
         className="path"
         variants={pathVariants}
         initial="initial"

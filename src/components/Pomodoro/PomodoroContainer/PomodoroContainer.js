@@ -13,6 +13,7 @@ import { settingsActions } from "../../../store/settings";
 import PomodoroButtonContainer from "./PomodoroButtonContainer";
 import PomodoroTimer from "./PomodoroTimer";
 import restartMinutes from "../../../helpers/restart-minutes";
+import { memo } from "react";
 
 const click = "https://www.fesliyanstudios.com/play-mp3/387";
 const alarm = "https://www.fesliyanstudios.com/play-mp3/4387";
@@ -266,4 +267,4 @@ const PomodoroContainer = () => {
   );
 };
 
-export default PomodoroContainer;
+export default memo(PomodoroContainer);

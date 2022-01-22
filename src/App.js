@@ -8,7 +8,6 @@ import { authActions } from "./store/auth";
 import PomodoroPage from "./pages/PomodoroPage";
 import PomodoroShortPage from "./pages/PomodoroShortPage";
 import PomodoroLongPage from "./pages/PomodroLongPage";
-import { AnimatePresence } from "framer-motion";
 
 const App = () => {
   const [logIn, setLogin] = useState(true);
