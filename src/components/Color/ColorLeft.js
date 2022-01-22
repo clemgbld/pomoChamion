@@ -1,7 +1,7 @@
 const ColorLeft = ({ left, bottom, width, height, color }) => {
   return (
     <div
-      className="absolute blur"
+      className="absolute blur "
       style={{
         left: left,
         bottom: bottom,

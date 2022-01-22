@@ -55,11 +55,11 @@ const PomodoroContainer = () => {
 
   const controls = useAnimation();
 
-  const restartCircularAnimaton = useCallback(async () => {
+  const restartCircularAnimation = useCallback(async () => {
     return await controls.start({
       pathLength: 0,
       transition: {
-        duration: 0.3,
+        duration: 0.001,
       },
     });
   }, [controls]);
@@ -68,7 +68,7 @@ const PomodoroContainer = () => {
   const [seconds, setSeconds] = useState(0);
   const [start, setStart] = useState(false);
 
-  const initParameters = useCallback(async () => {
+  useEffect(() => {
     if (locationPath === "/") {
       setMinutes(pomodoro);
 
@@ -89,16 +89,22 @@ const PomodoroContainer = () => {
 
     setSeconds(0);
 
-    await restartCircularAnimaton();
-    setStart(false);
+    restartCircularAnimation();
+    let timer = setTimeout(() => {
+      setStart(false);
+    }, 40);
 
     if (
       (locationPath === "/short" && autoStartBreak) ||
       (locationPath === "/long" && autoStartBreak) ||
       (locationPath === "/" && autoStartPomodoro)
     ) {
-      setStart(true);
+      setTimeout(() => {
+        setStart(true);
+      }, 40);
     }
+
+    return () => clearTimeout(timer);
   }, [
     locationPath,
     circleLong,
@@ -107,14 +113,10 @@ const PomodoroContainer = () => {
     pomodoro,
     shortBreak,
     longBreak,
-    restartCircularAnimaton,
+    restartCircularAnimation,
     autoStartPomodoro,
     autoStartBreak,
   ]);
-
-  useEffect(() => {
-    initParameters();
-  }, [initParameters]);
 
   const animationValue = minutes * 60 + seconds;
 
@@ -182,18 +184,20 @@ const PomodoroContainer = () => {
   //   handle the progressive circle bar
 
   useEffect(() => {
-    if (start) {
-      if (pageInView || !pageInView || locationPath) {
-        // do something many times
-        controls.start((i) => ({
-          pathLength: 1,
-          transition: {
-            duration: i,
-          },
-        }));
-      }
+    if (!start) {
+      return controls.stop();
     }
-  }, [start, pageInView, controls, locationPath]);
+
+    if (pageInView || !pageInView) {
+      // do something many times
+      controls.start((i) => ({
+        pathLength: 1,
+        transition: {
+          duration: i,
+        },
+      }));
+    }
+  }, [start, pageInView, controls]);
 
   //   handle start pause
 
@@ -206,7 +210,7 @@ const PomodoroContainer = () => {
 
   const restartHandler = async () => {
     play(click);
-    await restartCircularAnimaton();
+    await restartCircularAnimation();
 
     setStart(false);
 

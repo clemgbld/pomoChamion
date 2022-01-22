@@ -1,7 +1,7 @@
 const ColorTop = ({ top, width, height, color }) => {
   return (
     <div
-      className="absolute blur"
+      className="absolute blur "
       style={{
         top: top,
         width: width,
