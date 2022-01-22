@@ -70,40 +70,42 @@ const PomodoroContainer = () => {
   const [start, setStart] = useState(false);
 
   useEffect(() => {
-    if (locationPath === "/") {
-      setMinutes(pomodoro);
+    async function initialRendering() {
+      if (locationPath === "/") {
+        setMinutes(pomodoro);
 
-      circleColor = circlePomodoro;
+        circleColor = circlePomodoro;
+      }
+
+      if (locationPath === "/short") {
+        setMinutes(shortBreak);
+
+        circleColor = circleShort;
+      }
+
+      if (locationPath === "/long") {
+        setMinutes(longBreak);
+        circleColor = circleLong;
+      }
+      setSeconds(0);
+
+      await restartCircularAnimaton();
+
+      setStart(false);
+
+      if (locationPath === "/" && autoStartPomodoro) {
+        setStart(true);
+      }
+
+      if (
+        (locationPath === "/short" && autoStartBreak) ||
+        (locationPath === "/long" && autoStartBreak)
+      ) {
+        setStart(true);
+      }
     }
 
-    if (locationPath === "/short") {
-      setMinutes(shortBreak);
-
-      circleColor = circleShort;
-    }
-
-    if (locationPath === "/long") {
-      setMinutes(longBreak);
-      circleColor = circleLong;
-    }
-    setSeconds(0);
-
-    restartCircularAnimaton();
-
-    setStart(false);
-
-    if (locationPath === "/" && autoStartPomodoro) {
-      setStart(true);
-    }
-
-    if (
-      (locationPath === "/short" && autoStartBreak) ||
-      (locationPath === "/long" && autoStartBreak)
-    ) {
-      setStart(true);
-    }
-
-    return () => clearTimeout(waitAsyncTask);
+    initialRendering();
   }, [
     locationPath,
     circleLong,
@@ -206,9 +208,9 @@ const PomodoroContainer = () => {
 
   //   handle restart
 
-  const restartHandler = () => {
+  const restartHandler = async () => {
     play(click);
-    restartCircularAnimaton();
+    await restartCircularAnimaton();
 
     setStart(false);
 
