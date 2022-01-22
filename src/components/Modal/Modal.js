@@ -16,8 +16,7 @@ const modalVariants = {
     x: "-50%",
     y: "-50%",
     transition: {
-      duration: 0.3,
-      delay: 0.3,
+      duration: 0.2,
     },
   },
 };
@@ -43,7 +42,7 @@ const Modal = (props) => {
 
               y: " 100vh",
               transition: {
-                duration: 0.3,
+                duration: 0.2,
               },
             }}
             className={classes.modal}
