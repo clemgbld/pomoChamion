@@ -27,6 +27,7 @@ const App = () => {
   return (
     <>
       <Header />
+
       {!authName && !logIn && (
         <Switch>
           <Route path="/auth">
