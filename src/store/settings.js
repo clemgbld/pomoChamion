@@ -46,7 +46,7 @@ const settingsSlice = createSlice({
     },
 
     updateWorkTime: (state, actions) => {
-      const minutes = actions.payload * 25;
+      const minutes = actions.payload * state.pomodoro;
       const rest = minutes % 60;
 
       if (minutes < 60) {

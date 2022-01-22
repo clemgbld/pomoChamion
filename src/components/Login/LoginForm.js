@@ -56,7 +56,10 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const signInHandler = async () => {
     const name = await SignInWithGoogle();
-    dispatch(authActions.login(name));
+
+    if (name) {
+      dispatch(authActions.login(name));
+    }
   };
 
   return (

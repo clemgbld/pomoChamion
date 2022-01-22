@@ -5,11 +5,9 @@ import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./store/auth";
-import Loader from "./components/Loading/Loader";
-
-const PomodoroPage = lazy(() => import("./pages/PomodoroPage"));
-const PomodoroShortPage = lazy(() => import("./pages/PomodoroShortPage"));
-const PomodoroLongPage = lazy(() => import("./pages/PomodroLongPage"));
+import PomodoroPage from "./pages/PomodoroPage";
+import PomodoroShortPage from "./pages/PomodoroShortPage";
+import PomodoroLongPage from "./pages/PomodroLongPage";
 
 const App = () => {
   const [logIn, setLogin] = useState(true);
@@ -27,7 +25,6 @@ const App = () => {
   return (
     <>
       <Header />
-
       {!authName && !logIn && (
         <Switch>
           <Route path="/auth">
@@ -41,19 +38,13 @@ const App = () => {
       {authName && (
         <Switch location={location} key={location.key}>
           <Route path="/short">
-            <Suspense fallback={<Loader />}>
-              <PomodoroShortPage />
-            </Suspense>
+            <PomodoroShortPage />
           </Route>
           <Route path="/long">
-            <Suspense fallback={<Loader />}>
-              <PomodoroLongPage />
-            </Suspense>
+            <PomodoroLongPage />
           </Route>
           <Route path="/" exact>
-            <Suspense fallback={<Loader />}>
-              <PomodoroPage />
-            </Suspense>
+            <PomodoroPage />
           </Route>
           <Route path="*">
             <Redirect to="/" exact />

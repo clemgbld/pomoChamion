@@ -13,7 +13,6 @@ import { settingsActions } from "../../../store/settings";
 import PomodoroButtonContainer from "./PomodoroButtonContainer";
 import PomodoroTimer from "./PomodoroTimer";
 import restartMinutes from "../../../helpers/restart-minutes";
-import { memo } from "react";
 
 const click = "https://www.fesliyanstudios.com/play-mp3/387";
 const alarm = "https://www.fesliyanstudios.com/play-mp3/4387";
@@ -57,7 +56,7 @@ const PomodoroContainer = () => {
   const controls = useAnimation();
 
   const restartCircularAnimaton = useCallback(async () => {
-    await controls.start({
+    return await controls.start({
       pathLength: 0,
       transition: {
         duration: 0.3,
@@ -69,43 +68,37 @@ const PomodoroContainer = () => {
   const [seconds, setSeconds] = useState(0);
   const [start, setStart] = useState(false);
 
-  useEffect(() => {
-    async function initialRendering() {
-      if (locationPath === "/") {
-        setMinutes(pomodoro);
+  const initParameters = useCallback(async () => {
+    if (locationPath === "/") {
+      setMinutes(pomodoro);
 
-        circleColor = circlePomodoro;
-      }
-
-      if (locationPath === "/short") {
-        setMinutes(shortBreak);
-
-        circleColor = circleShort;
-      }
-
-      if (locationPath === "/long") {
-        setMinutes(longBreak);
-        circleColor = circleLong;
-      }
-      setSeconds(0);
-
-      await restartCircularAnimaton();
-
-      setStart(false);
-
-      if (locationPath === "/" && autoStartPomodoro) {
-        setStart(true);
-      }
-
-      if (
-        (locationPath === "/short" && autoStartBreak) ||
-        (locationPath === "/long" && autoStartBreak)
-      ) {
-        setStart(true);
-      }
+      circleColor = circlePomodoro;
     }
 
-    initialRendering();
+    if (locationPath === "/short") {
+      setMinutes(shortBreak);
+
+      circleColor = circleShort;
+    }
+
+    if (locationPath === "/long") {
+      setMinutes(longBreak);
+
+      circleColor = circleLong;
+    }
+
+    setSeconds(0);
+
+    await restartCircularAnimaton();
+    setStart(false);
+
+    if (
+      (locationPath === "/short" && autoStartBreak) ||
+      (locationPath === "/long" && autoStartBreak) ||
+      (locationPath === "/" && autoStartPomodoro)
+    ) {
+      setStart(true);
+    }
   }, [
     locationPath,
     circleLong,
@@ -118,6 +111,10 @@ const PomodoroContainer = () => {
     autoStartPomodoro,
     autoStartBreak,
   ]);
+
+  useEffect(() => {
+    initParameters();
+  }, [initParameters]);
 
   const animationValue = minutes * 60 + seconds;
 
@@ -185,19 +182,18 @@ const PomodoroContainer = () => {
   //   handle the progressive circle bar
 
   useEffect(() => {
-    if (!start) {
-      return controls.stop();
+    if (start) {
+      if (pageInView || !pageInView || locationPath) {
+        // do something many times
+        controls.start((i) => ({
+          pathLength: 1,
+          transition: {
+            duration: i,
+          },
+        }));
+      }
     }
-    if (pageInView || !pageInView) {
-      // do something many times
-      controls.start((i) => ({
-        pathLength: 1,
-        transition: {
-          duration: i,
-        },
-      }));
-    }
-  }, [start, pageInView, controls]);
+  }, [start, pageInView, controls, locationPath]);
 
   //   handle start pause
 
@@ -263,4 +259,4 @@ const PomodoroContainer = () => {
   );
 };
 
-export default memo(PomodoroContainer);
+export default PomodoroContainer;
