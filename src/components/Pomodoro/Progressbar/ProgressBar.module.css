@@ -9,3 +9,9 @@
     height: 93.75%;
   }
 }
+
+@media (max-width: 25em) {
+  .circle {
+    display: none;
+  }
+}
