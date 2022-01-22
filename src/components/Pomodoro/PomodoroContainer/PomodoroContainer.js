@@ -56,8 +56,8 @@ const PomodoroContainer = () => {
 
   const controls = useAnimation();
 
-  const restartCircularAnimaton = useCallback(() => {
-    controls.start({
+  const restartCircularAnimaton = useCallback(async () => {
+    await controls.start({
       pathLength: 0,
       transition: {
         duration: 0.3,
@@ -89,23 +89,18 @@ const PomodoroContainer = () => {
     setSeconds(0);
 
     restartCircularAnimaton();
-    let waitAsyncTask = setTimeout(() => {
-      setStart(false);
-    }, 400);
+
+    setStart(false);
 
     if (locationPath === "/" && autoStartPomodoro) {
-      setTimeout(() => {
-        setStart(true);
-      }, 450);
+      setStart(true);
     }
 
     if (
       (locationPath === "/short" && autoStartBreak) ||
       (locationPath === "/long" && autoStartBreak)
     ) {
-      setTimeout(() => {
-        setStart(true);
-      }, 450);
+      setStart(true);
     }
 
     return () => clearTimeout(waitAsyncTask);
@@ -215,9 +210,8 @@ const PomodoroContainer = () => {
     play(click);
     restartCircularAnimaton();
 
-    setTimeout(() => {
-      setStart(false);
-    }, 400);
+    setStart(false);
+
     restartMinutes(locationPath, setMinutes, pomodoro, shortBreak, longBreak);
     setSeconds(0);
   };
