@@ -40,17 +40,17 @@ const App = () => {
       {authName && (
         <Switch location={location} key={location.key}>
           <Route path="/short">
-            <Suspense fallback={Loader}>
+            <Suspense fallback={<Loader />}>
               <PomodoroShortPage />
             </Suspense>
           </Route>
           <Route path="/long">
-            <Suspense fallback={Loader}>
+            <Suspense fallback={<Loader />}>
               <PomodoroLongPage />
             </Suspense>
           </Route>
           <Route path="/" exact>
-            <Suspense fallback={Loader}>
+            <Suspense fallback={<Loader />}>
               <PomodoroPage />
             </Suspense>
           </Route>
