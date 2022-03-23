@@ -1,4 +1,4 @@
-import { useState, Suspense, lazy } from "react";
+import { useState } from "react";
 import LoginPage from "./pages/LoginPage";
 import Header from "./components/Layout/Header/Header";
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
@@ -23,7 +23,7 @@ const App = () => {
   }, [dispatch, authName]);
 
   return (
-    <>
+    <main>
       <Header />
       {!authName && !logIn && (
         <Switch>
@@ -51,7 +51,7 @@ const App = () => {
           </Route>
         </Switch>
       )}
-    </>
+    </main>
   );
 };
 

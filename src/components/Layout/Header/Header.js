@@ -35,34 +35,36 @@ const Header = () => {
       <Modal isOpen={isOpen} onClose={closeModalHandler}>
         <InfoContainer />
       </Modal>
-      <ul className={classes.container}>
-        {authName && (
-          <>
-            <li>
-              <MainLogo />
-            </li>
+      <nav>
+        <ul className={classes.container}>
+          {authName && (
+            <>
+              <li>
+                <MainLogo />
+              </li>
 
-            <div className={classes["button-container"]}>
-              <li>
-                <Button
-                  onClickButton={openModalHandler}
-                  textButton="Info"
-                  iconName="information-circle-outline"
-                  right="15rem"
-                />
-              </li>
-              <li>
-                <Button
-                  onClickButton={signOutHandler}
-                  textButton="Logout"
-                  iconName="log-out-outline"
-                  right="5rem"
-                />
-              </li>
-            </div>
-          </>
-        )}
-      </ul>
+              <div className={classes["button-container"]}>
+                <li>
+                  <Button
+                    onClickButton={openModalHandler}
+                    textButton="Info"
+                    iconName="information-circle-outline"
+                    right="15rem"
+                  />
+                </li>
+                <li>
+                  <Button
+                    onClickButton={signOutHandler}
+                    textButton="Logout"
+                    iconName="log-out-outline"
+                    right="5rem"
+                  />
+                </li>
+              </div>
+            </>
+          )}
+        </ul>
+      </nav>
     </header>
   );
 };

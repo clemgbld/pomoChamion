@@ -3,7 +3,7 @@ import { AnimatedDiv } from "../Animations/animations";
 import Modal from "../Modal/Modal";
 import React, { useState } from "react";
 import SettingsForm from "./SettingsForm";
-
+import { onKeyDown } from "../../helpers/onKeyDown";
 
 const settingsVariants = {
   animate: {
@@ -36,14 +36,15 @@ const SettingsButton = () => {
 
   return (
     <>
-      
-        <Modal isOpen={isOpen} onClose={closeModalHandler} key="modal1">
-          <SettingsForm onClose={closeModalHandler} />
-        </Modal>
-     
+      <Modal isOpen={isOpen} onClose={closeModalHandler} key="modal1">
+        <SettingsForm onClose={closeModalHandler} />
+      </Modal>
 
       <AnimatedDiv
+        role="button"
+        tabIndex="0"
         onClick={openModalHandler}
+        onKeyDown={(e) => onKeyDown(e, openModalHandler)}
         variants={settingsVariants}
         animate="animate"
         whileHover="hover"

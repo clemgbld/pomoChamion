@@ -3,6 +3,7 @@ import Overlay from "./Overlay";
 import ReactDom from "react-dom";
 import { AnimatedDiv } from "../Animations/animations";
 import { AnimatePresence } from "framer-motion";
+import { onKeyDown } from "../../helpers/onKeyDown";
 
 const modalVariants = {
   initial: {
@@ -25,6 +26,7 @@ const Modal = (props) => {
   const closeHandler = () => {
     props.onClose();
   };
+
   return ReactDom.createPortal(
     <>
       <AnimatePresence>
@@ -47,7 +49,13 @@ const Modal = (props) => {
             }}
             className={classes.modal}
           >
-            <div onClick={closeHandler} className={classes.close}>
+            <div
+              role="button"
+              tabIndex="0"
+              onKeyDown={(e) => onKeyDown(e, closeHandler)}
+              onClick={closeHandler}
+              className={classes.close}
+            >
               <ion-icon name="close-outline"></ion-icon>
             </div>
             {props.children}
